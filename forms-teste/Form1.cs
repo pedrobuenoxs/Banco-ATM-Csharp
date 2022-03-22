@@ -12,23 +12,40 @@ namespace forms_teste
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonClick_Sacar(object sender, EventArgs e)
         {
-            Conta c = new Conta();
-            Cliente Pedro = new Cliente();
-            Pedro.nomeTitular = "Pedro Henrique Bueno Xavier e Silva";
-            Pedro.cpf = "064.396.991-80";
-            Pedro.rg = "63.396.991-6";
-            c.titular = Pedro;
+            string login = textBoxLogin.Text;
+            string passwd = textBoxPasswd.Text;
 
-            MessageBox.Show(c.titular.nomeTitular);
+            if (login == "PedroHBXS" && passwd == "Bueno")
+            {
+                MessageBox.Show("Saque realizado!");
+            }
+            else
+            {
+                MessageBox.Show("Não autorizado!");
+            }
 
-            c.addIdConta(1);
-            c.Despositar(100);
+        }
+
+        private void buttonClick_Depositar(object sender, EventArgs e)
+        {
+            Conta a = new Conta();
+            Conta b = new Conta();
+            a.Depositar(1000);
+            b.Depositar(1000);
+
+            double dinheiro = 280;
+
+            if (a.Transferir(dinheiro, b))
+            {
+                MessageBox.Show("Deu bom!\nConta a:" + a.saldoAtual() + "\nConta b:" + b.saldoAtual());
+            }
 
 
-            MessageBox.Show("seu saldo é: " + c.saldoAtual());
-            
+
+
+
             /* Classes criadas até entao:
              * Conta - já com metodos de saque, deposito, mostrar o salto etcc
              * Cliente - necessário criar os metodos dentro dessa classe
@@ -36,7 +53,59 @@ namespace forms_teste
              */
 
 
-                   
+
+
+        }
+
+        private void buttonClick_Transferir(object sender, EventArgs e)
+        {
+            Conta a = new Conta();
+            Conta b = new Conta();
+            a.Depositar(1000);
+            b.Depositar(1000);
+
+            double dinheiro = 280;
+
+            if (a.Transferir(dinheiro, b))
+            {
+                MessageBox.Show("Deu bom!\nConta a:" + a.saldoAtual() + "\nConta b:" + b.saldoAtual());
+            }
+
+
+
+
+
+            /* Classes criadas até entao:
+             * Conta - já com metodos de saque, deposito, mostrar o salto etcc
+             * Cliente - necessário criar os metodos dentro dessa classe
+             *
+             */
+
+
+
+
+        }
+
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+                
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -10,6 +10,7 @@ namespace forms_teste
     {
         private int idConta;
         private double saldo;
+        private string senha;
         public Cliente titular;
 
         public bool Sacar(double valorSaque)
@@ -27,6 +28,15 @@ namespace forms_teste
         }
         public double saldoAtual()
             { return this.saldo; }
+        public bool Login(string passwd)
+        {
+            if (this.senha == passwd)
+            {
+                return true;
+            }
+            return false;
+        }
+                   
 
         public int addIdConta(int valor)
         {
@@ -40,12 +50,27 @@ namespace forms_teste
         }
 
 
-        public bool Despositar(double valorDeposito)
+
+        public void Depositar(double valorDeposito)
         {
             this.saldo += valorDeposito;
-            return true;
+            
 
         }
+
+
+        public bool Transferir(double valor, Conta contaDestino)
+        {
+            if (this.Sacar(valor))
+            {
+                this.saldo = this.saldo - valor;
+                contaDestino.Depositar(valor);
+                return true;
+            }
+            return false;
+
+        }
+
 
     }
 }
