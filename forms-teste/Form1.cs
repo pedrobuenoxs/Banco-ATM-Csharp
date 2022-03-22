@@ -37,6 +37,8 @@ namespace forms_teste
 
             double dinheiro = 280;
 
+            // Falta verificar o login
+
             if (a.Transferir(dinheiro, b))
             {
                 MessageBox.Show("Deu bom!\nConta a:" + a.saldoAtual() + "\nConta b:" + b.saldoAtual());
