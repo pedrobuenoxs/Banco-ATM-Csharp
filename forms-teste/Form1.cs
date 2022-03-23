@@ -13,13 +13,25 @@ namespace forms_teste
         }
 
         private void buttonClick_Sacar(object sender, EventArgs e)
+
         {
+            Conta conta = new Conta();
+            Cliente titular = new Cliente();
+            conta.titular = titular;
+            titular.Cadastrar("Pedro", "06439699180");
+
+
+            MessageBox.Show("cpf: " + conta.titular.getCpf());
+            conta.Depositar(100);
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
+            double valor = Convert.ToDouble(textBoxValor.Text);
 
-            if (login == "PedroHBXS" && passwd == "Bueno")
+            if (login == "a" && passwd == "a")
             {
-                MessageBox.Show("Saque realizado!");
+                conta.Sacar(valor); 
+                MessageBox.Show("Saldo:" + conta.getSaldo());
+                
             }
             else
             {
@@ -30,48 +42,45 @@ namespace forms_teste
 
         private void buttonClick_Depositar(object sender, EventArgs e)
         {
-            Conta a = new Conta();
-            Conta b = new Conta();
-            a.Depositar(1000);
-            b.Depositar(1000);
+            Conta conta = new Conta();
+            conta.Depositar(100);
+            string login = textBoxLogin.Text;
+            string passwd = textBoxPasswd.Text;
+            double valor = Convert.ToDouble(textBoxValor.Text);
 
-            double dinheiro = 280;
-
-            // Falta verificar o login
-
-            if (a.Transferir(dinheiro, b))
+            if (login == "a" && passwd == "a")
             {
-                MessageBox.Show("Deu bom!\nConta a:" + a.saldoAtual() + "\nConta b:" + b.saldoAtual());
+                conta.Depositar(valor);
+                MessageBox.Show("Saldo:" + conta.getSaldo());               
+
             }
-
-
-
-
-
-            /* Classes criadas até entao:
-             * Conta - já com metodos de saque, deposito, mostrar o salto etcc
-             * Cliente - necessário criar os metodos dentro dessa classe
-             *
-             */
-
-
-
+            else
+            {
+                MessageBox.Show("Não autorizado!");
+            }
+            
+           
 
         }
 
         private void buttonClick_Transferir(object sender, EventArgs e)
         {
-            Conta a = new Conta();
-            Conta b = new Conta();
-            a.Depositar(1000);
-            b.Depositar(1000);
 
-            double dinheiro = 280;
+            string login = textBoxLogin.Text;
+            string passwd = textBoxPasswd.Text;
+            string cpf = textBoxCpf.Text;
 
-            if (a.Transferir(dinheiro, b))
-            {
-                MessageBox.Show("Deu bom!\nConta a:" + a.saldoAtual() + "\nConta b:" + b.saldoAtual());
-            }
+            
+
+
+
+            
+
+            double valor = Convert.ToDouble(textBoxValor.Text);
+
+            
+
+            
 
 
 
@@ -107,6 +116,73 @@ namespace forms_teste
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitter2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonClick_Login(object sender, EventArgs e)
+        {
+            
+
+            string login = textBoxLogin.Text;
+            string passwd = textBoxPasswd.Text;
+            string cpf = textBoxCpf.Text;                        
+
+            Conta conta = new Conta();
+            Cliente cliente = new Cliente();
+            conta.titular = cliente; //titular é do tipo cliente por isso aceita o novo cliente da classe cliente
+
+            /*
+            * Preciso verificar dois pontos:
+            * 1 - A conta já existe?
+            *      Se sim, basta nome e senha para logar. VERIFICAR PELO CPF!!!
+                   Se não, o usuário precisa cadastrar o CPF em conjunto para prosseguir.
+            *      
+            * 2 - É uma nova conta?
+            *      Precisamos criar: 
+
+            */
+            conta.setID(login); //SQL deve ter um metodo para me dar o id de um cadastro novo
+            conta.setSenha(passwd);
+            conta.titular.Cadastrar(login, cpf); 
+
+            //Em sequênciar conectar-se ao data base para poder fazer as operações
+
+
+            
+
+
+
+            
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }

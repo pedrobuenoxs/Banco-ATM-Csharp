@@ -8,13 +8,18 @@ namespace forms_teste
 {
     internal class Cliente
     {
-        public string nomeTitular;
-        public string cpf;
-        public string rg;
+        private string nomeTitular;
+        private string cpf;
+        
 
-        /*
-         * Adicionar metodos para adicionar nome, cpf e rg ao cliente
-         */
+        public void Cadastrar(string nome,string doc)
+        {
+            this.nomeTitular = nome;
+            this.cpf = doc;
+
+        }
+        public string getCpf() { return cpf; }
+
 
     }
 }

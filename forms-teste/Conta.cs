@@ -8,10 +8,11 @@ namespace forms_teste
 {
     internal class Conta
     {
-        private int idConta;
+        private string idConta;
         private double saldo;
         private string senha;
         public Cliente titular;
+
 
         public bool Sacar(double valorSaque)
         {
@@ -26,35 +27,33 @@ namespace forms_teste
             { return false;}
                         
         }
-        public double saldoAtual()
+        public double getSaldo()
             { return this.saldo; }
-        public bool Login(string passwd)
-        {
-            if (this.senha == passwd)
-            {
-                return true;
-            }
-            return false;
-        }
-                   
+                
 
-        public int addIdConta(int valor)
+        public void setSenha(string passwd)
+        {            
+                this.senha = passwd;         
+                        
+        }
+
+
+        public void setID(string valor)
         {
+            
             this.idConta = valor;
-            return this.idConta; 
+ 
         }
 
-        public int idDaConta()
+        public string getId()
         {
             return this.idConta;
         }
 
 
-
         public void Depositar(double valorDeposito)
         {
-            this.saldo += valorDeposito;
-            
+            this.saldo += valorDeposito;            
 
         }
 
@@ -63,7 +62,6 @@ namespace forms_teste
         {
             if (this.Sacar(valor))
             {
-                this.saldo = this.saldo - valor;
                 contaDestino.Depositar(valor);
                 return true;
             }

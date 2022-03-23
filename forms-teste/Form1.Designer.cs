@@ -37,8 +37,13 @@
             this.textBoxPasswd = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxIdTransf = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxValor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxCpf = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -46,7 +51,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Location = new System.Drawing.Point(12, 171);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(225, 58);
             this.button1.TabIndex = 0;
@@ -59,7 +64,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(12, 76);
+            this.button2.Location = new System.Drawing.Point(12, 235);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(225, 58);
             this.button2.TabIndex = 1;
@@ -72,7 +77,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(12, 140);
+            this.button3.Location = new System.Drawing.Point(12, 299);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(225, 58);
             this.button3.TabIndex = 2;
@@ -82,7 +87,7 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(252, 35);
+            this.textBoxLogin.Location = new System.Drawing.Point(253, 35);
             this.textBoxLogin.Multiline = true;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(216, 35);
@@ -94,17 +99,17 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(252, 12);
+            this.label1.Location = new System.Drawing.Point(253, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 20);
+            this.label1.Size = new System.Drawing.Size(125, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Insira o seu idConta";
+            this.label1.Text = "Insira o seu nome";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(252, 76);
+            this.label2.Location = new System.Drawing.Point(253, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 20);
             this.label2.TabIndex = 6;
@@ -112,7 +117,7 @@
             // 
             // textBoxPasswd
             // 
-            this.textBoxPasswd.Location = new System.Drawing.Point(252, 99);
+            this.textBoxPasswd.Location = new System.Drawing.Point(253, 99);
             this.textBoxPasswd.Multiline = true;
             this.textBoxPasswd.Name = "textBoxPasswd";
             this.textBoxPasswd.Size = new System.Drawing.Size(216, 35);
@@ -123,7 +128,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(474, 12);
+            this.label3.Location = new System.Drawing.Point(253, 171);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 20);
             this.label3.TabIndex = 8;
@@ -131,40 +136,99 @@
             // 
             // textBoxIdTransf
             // 
-            this.textBoxIdTransf.Location = new System.Drawing.Point(474, 35);
+            this.textBoxIdTransf.Location = new System.Drawing.Point(253, 194);
             this.textBoxIdTransf.Multiline = true;
             this.textBoxIdTransf.Name = "textBoxIdTransf";
             this.textBoxIdTransf.Size = new System.Drawing.Size(216, 35);
             this.textBoxIdTransf.TabIndex = 7;
             this.textBoxIdTransf.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // textBox5
+            // textBoxValor
             // 
-            this.textBox5.Location = new System.Drawing.Point(474, 99);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(216, 35);
-            this.textBox5.TabIndex = 11;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.textBoxValor.Location = new System.Drawing.Point(253, 258);
+            this.textBoxValor.Multiline = true;
+            this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.Size = new System.Drawing.Size(216, 35);
+            this.textBoxValor.TabIndex = 11;
+            this.textBoxValor.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(474, 79);
+            this.label5.Location = new System.Drawing.Point(253, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 20);
             this.label5.TabIndex = 12;
             this.label5.Text = "Valor";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(12, 12);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(225, 122);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "Cadastre-se ou entre na sua conta!";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.buttonClick_Login);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(4, 414);
+            this.splitter1.TabIndex = 15;
+            this.splitter1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Black;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.Snow;
+            this.label4.Location = new System.Drawing.Point(23, 370);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(196, 35);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Not connected.";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label6.Location = new System.Drawing.Point(475, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(170, 20);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Insira seu CPF (opcional)";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // textBoxCpf
+            // 
+            this.textBoxCpf.Location = new System.Drawing.Point(475, 35);
+            this.textBoxCpf.Multiline = true;
+            this.textBoxCpf.Name = "textBoxCpf";
+            this.textBoxCpf.Size = new System.Drawing.Size(216, 35);
+            this.textBoxCpf.TabIndex = 18;
+            this.textBoxCpf.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(699, 207);
+            this.ClientSize = new System.Drawing.Size(781, 414);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxCpf);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBoxValor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxIdTransf);
             this.Controls.Add(this.label2);
@@ -190,10 +254,15 @@
         private TextBox textBoxLogin;
         private TextBox textBoxPasswd;
         private TextBox textBoxIdTransf;
-        private TextBox textBox5;
+        private TextBox textBoxValor;
         private Label label1;
         private Label label2;        
         private Label label3;        
         private Label label5;
+        private Button button4;
+        private Splitter splitter1;
+        private Label label4;
+        private Label label6;
+        private TextBox textBoxCpf;
     }
 }
