@@ -17,14 +17,14 @@ namespace forms_teste
 
         public dbCadastro(String Nome,String Cpf,String Senha)
         {
-
-            //Comando Sql
-            cmd.CommandText = "inserto into banco-atm (nome,cpf,senha,saldo) values (@Nome,@Cpf,@Senha)";
-
-            //paramePtros
-            cmd.Parameters.AddWithValue("@nome",Nome);
+            cmd.Parameters.AddWithValue("@nome", Nome);
             cmd.Parameters.AddWithValue("@cpf", Cpf);
             cmd.Parameters.AddWithValue("@senha", Senha);
+            //Comando Sql
+            cmd.CommandText = "insert into tblClientes values(@nome,@cpf,@senha)";
+
+            //paramePtros
+            
             
 
 

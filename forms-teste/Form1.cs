@@ -1,3 +1,5 @@
+using System.Data.SqlClient;
+
 namespace forms_teste
 {
     public partial class Form1 : Form
@@ -151,11 +153,27 @@ namespace forms_teste
             Conta conta = new Conta();
             Cliente cliente = new Cliente();
             conta.titular = cliente;
+            /*
+            try
+            {
+                string connectionStrig;
+                SqlConnection con;
+                connectionStrig = @"Data Source=DESKTOP-KKPDQLR;Initial Catalog=bancoAtm;Integrated Security=True";
+                con = new SqlConnection(connectionStrig);
+                con.Open();
+                MessageBox.Show("open");
 
+            }catch (SqlException erro)
+            {
+                MessageBox.Show("erro:" + erro);
+            }
+            */
+            
+            
             dbCadastro cadastro = new dbCadastro(login,cpf,passwd);
             MessageBox.Show(cadastro.msg);
 
-
+            
                 //titular é do tipo cliente por isso aceita o novo cliente da classe cliente
 
             /*

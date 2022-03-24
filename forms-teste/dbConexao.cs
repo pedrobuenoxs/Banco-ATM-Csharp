@@ -14,7 +14,7 @@ namespace forms_teste
         //construtor
         public dbConexao()
         {
-            con.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pedro\source\repos\forms-teste\forms-teste\banco-atm.mdf;Integrated Security=True;Connect Timeout=30";
+            con.ConnectionString = @"Data Source=DESKTOP-KKPDQLR;Initial Catalog=bancoAtm;Integrated Security=True";
         }
         //metodo conectar
         public SqlConnection Connection()
