@@ -17,7 +17,7 @@ namespace forms_teste
             con.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pedro\source\repos\forms-teste\forms-teste\banco-atm.mdf;Integrated Security=True;Connect Timeout=30";
         }
         //metodo conectar
-        public SqlConnection connection()
+        public SqlConnection Connection()
         {
             if (con.State == System.Data.ConnectionState.Closed)
             {
