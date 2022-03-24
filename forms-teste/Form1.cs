@@ -150,7 +150,13 @@ namespace forms_teste
 
             Conta conta = new Conta();
             Cliente cliente = new Cliente();
-            conta.titular = cliente; //titular é do tipo cliente por isso aceita o novo cliente da classe cliente
+            conta.titular = cliente;
+
+            dbCadastro cadastro = new dbCadastro(login,cpf,passwd);
+            MessageBox.Show(cadastro.msg);
+
+
+                //titular é do tipo cliente por isso aceita o novo cliente da classe cliente
 
             /*
             * Preciso verificar dois pontos:
@@ -162,9 +168,9 @@ namespace forms_teste
             *      Precisamos criar: 
 
             */
-            conta.setID(login); //SQL deve ter um metodo para me dar o id de um cadastro novo
-            conta.setSenha(passwd);
-            conta.titular.Cadastrar(login, cpf); 
+            //conta.setID(login); //SQL deve ter um metodo para me dar o id de um cadastro novo
+            //conta.setSenha(passwd);
+            //conta.titular.Cadastrar(login, cpf); 
 
             //Em sequênciar conectar-se ao data base para poder fazer as operações
 
