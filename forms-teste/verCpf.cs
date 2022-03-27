@@ -5,30 +5,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace forms_teste
 {
-    public class dbLogin
-
+    internal class verCpf
     {
-        public bool statusLogin = false;
+
         dbConexao dbConexao = new dbConexao();
         SqlCommand cmd = new SqlCommand();
+        public bool statusCPF;
         SqlDataReader dbCmdReader;
 
         public String msg;
 
-        public void Status(string Nome, string Senha)
+
+        public verCpf(String Nome, String CPF)
         {
             cmd.Parameters.AddWithValue("@nome", Nome);
-            cmd.Parameters.AddWithValue("@senha", Senha);
-            //Comando Sql
-            cmd.CommandText = "select * from tblClientes where Nome = @nome and Senha = @senha";
+            cmd.Parameters.AddWithValue("@cpf", CPF);
 
-            //paramePtros         
+            cmd.CommandText = "select * from tblClientes where CPF = @cpf";
 
             try
-            {   
+            {
                 cmd.Connection = dbConexao.Connection();
 
                 cmd.ExecuteNonQuery();
@@ -37,24 +35,21 @@ namespace forms_teste
 
                 if (dbCmdReader.HasRows)
                 {
-                    this.msg = "Logado com sucesso!";
-                    this.statusLogin = true;
-                    
+                    this.msg = "Já existe um usuário com este CPF";
+                    this.statusCPF = true;
+
 
                 }
 
-                
+
             }
             catch (Exception e)
             {
                 //caso der algum erro
                 this.msg = "Erro ao tentar se conectar ao banco de dados";
-                
-                statusLogin = false;
+
+                statusCPF = false;
             }
-            
-            
-            
         }
     }
 }

@@ -1,4 +1,4 @@
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace forms_teste
 {
@@ -107,28 +107,47 @@ namespace forms_teste
 
         private void buttonClick_Login(object sender, EventArgs e)
         {
-
-
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
             string cpf = textBoxCpf.Text;
+            //definindo as variaveis de entrada de texto do programa
 
             Conta conta = new Conta();
             Cliente cliente = new Cliente();
             conta.titular = cliente;
+                                   
+            dbLogin dbLogin = new dbLogin(); //Classe Login instanciada
 
-            //dbCadastro dbCadastro = new dbCadastro(login, passwd, cpf);
-            //MessageBox.Show(dbCadastro.msg);
+            dbLogin.Status(login, passwd); //Verificando se esse usuário e senha já estão cadastrados
+                       
+            verCpf statusCPF = new verCpf(login, cpf); //Classe vercpf instanciada, ela verifica se já existe esse cpf na dba
+                                             
+            if (dbLogin.statusLogin)
+            {
+                MessageBox.Show(dbLogin.msg); //True: Logado com sucesso!
 
-
-            dbLogin dbLogin = new dbLogin(login, passwd);
-            MessageBox.Show(dbLogin.msg);
-
-
-
-
-
-
+            }
+            else
+            {
+                if(cpf == "")
+                {
+                    MessageBox.Show("Insira o CPF para se cadastrar");
+                    return;
+                }
+                else
+                {
+                    if(statusCPF.statusCPF)
+                    {
+                        MessageBox.Show(statusCPF.msg);
+                    }
+                    else
+                    {
+                        dbCadastro dbCadastro = new dbCadastro(login, passwd, cpf);
+                        MessageBox.Show(dbCadastro.msg);
+                    }                   
+                }                         
+            }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
