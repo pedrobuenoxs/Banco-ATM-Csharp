@@ -200,7 +200,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(475, 12);
+            this.label6.Location = new System.Drawing.Point(490, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(170, 20);
             this.label6.TabIndex = 19;
@@ -209,7 +209,7 @@
             // 
             // textBoxCpf
             // 
-            this.textBoxCpf.Location = new System.Drawing.Point(475, 35);
+            this.textBoxCpf.Location = new System.Drawing.Point(490, 35);
             this.textBoxCpf.Multiline = true;
             this.textBoxCpf.Name = "textBoxCpf";
             this.textBoxCpf.Size = new System.Drawing.Size(216, 35);
