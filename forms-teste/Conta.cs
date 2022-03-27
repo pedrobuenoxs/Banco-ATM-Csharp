@@ -10,7 +10,7 @@ namespace forms_teste
     {
         private string idConta;
         private double saldo;
-        private string senha;
+        
         public Cliente titular;
 
 
@@ -31,12 +31,7 @@ namespace forms_teste
             { return this.saldo; }
                 
 
-        public void setSenha(string passwd)
-        {            
-                this.senha = passwd;         
-                        
-        }
-
+        
 
         public void setID(string valor)
         {

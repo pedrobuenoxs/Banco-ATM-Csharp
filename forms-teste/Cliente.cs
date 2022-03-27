@@ -10,12 +10,14 @@ namespace forms_teste
     {
         private string nomeTitular;
         private string cpf;
-        
+        private string senha;
 
-        public void Cadastrar(string nome,string doc)
+
+        public void Cadastrar(string nome,string senha, string doc)
         {
             this.nomeTitular = nome;
             this.cpf = doc;
+            this.senha = senha;
 
         }
         public string getCpf() { return cpf; }

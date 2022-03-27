@@ -150,7 +150,7 @@
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(216, 35);
             this.textBoxValor.TabIndex = 11;
-            this.textBoxValor.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.textBoxValor.TextChanged += new System.EventHandler(this.textValor_TextChanged);
             // 
             // label5
             // 

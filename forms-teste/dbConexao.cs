@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +8,19 @@ using System.Threading.Tasks;
 
 namespace forms_teste
 {
+
+
+
+
+
     public class dbConexao
     {
+        
         SqlConnection con = new SqlConnection();    
         //construtor
         public dbConexao()
         {
-            con.ConnectionString = @"Data Source=DESKTOP-KKPDQLR;Initial Catalog=bancoAtm;Integrated Security=True";
+            con.ConnectionString = @"Data Source=DESKTOP-620JRHR;Initial Catalog=bancoSQL;Integrated Security=True;TrustServerCertificate=True";
         }
         //metodo conectar
         public SqlConnection Connection()
@@ -22,6 +28,7 @@ namespace forms_teste
             if (con.State == System.Data.ConnectionState.Closed)
             {
                 con.Open();
+               
             }
             return con;               
 
