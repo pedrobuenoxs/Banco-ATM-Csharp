@@ -16,7 +16,7 @@ namespace forms_teste
 
         public String msg;
         public String id;
-        public string idCliente;
+        SqlDataReader idCliente;
 
         public dbGetClienteID(String Nome, String Senha)
         {
@@ -27,7 +27,9 @@ namespace forms_teste
             
             // !!!!! PRECISO DESCOBRIR COMO ARMAZERNAR O VALOR DE UM SELECT
             cmd.CommandText = "select idCliente from tblClientes wherer Nome = @nomeCliente and Senha = @Senha";
-            idCliente = Convert.ToString(cmd.Parameters[0].Value);
+            
+
+            
             //paramePtros         
 
             try
@@ -36,13 +38,15 @@ namespace forms_teste
 
                 cmd.Connection = dbConexao.Connection();
 
-                
+                idCliente = cmd.ExecuteReader();
+
+
                 //executar comando
                 cmd.ExecuteNonQuery();
                 //desconect
                 dbConexao.Desconectar();
                 //msg
-                this.msg = idCliente;
+                this.msg = Convert.ToString(idCliente);
 
 
 

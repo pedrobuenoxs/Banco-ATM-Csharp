@@ -113,18 +113,21 @@ namespace forms_teste
             string passwd = textBoxPasswd.Text;
             string cpf = textBoxCpf.Text;
 
-            dbConexao dbConexao = new dbConexao();
             Conta conta = new Conta();
             Cliente cliente = new Cliente();
             conta.titular = cliente;
 
-            dbCadastro dbCadastro = new dbCadastro(login, passwd, cpf);
-            
+            //dbCadastro dbCadastro = new dbCadastro(login, passwd, cpf);
+            //MessageBox.Show(dbCadastro.msg);
 
-            
 
-            
-            
+            dbLogin dbLogin = new dbLogin(login, passwd);
+            MessageBox.Show(dbLogin.msg);
+
+
+
+
+
 
         }
 
