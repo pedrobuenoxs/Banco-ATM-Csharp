@@ -26,28 +26,34 @@ namespace forms_teste
         private void buttonClick_Sacar(object sender, EventArgs e)
 
         {
-            Conta conta = new Conta();
-            Cliente titular = new Cliente();
-            conta.titular = titular;
-            titular.Cadastrar("Pedro", "06439699180","aa");
+            
 
-
-            MessageBox.Show("cpf: " + conta.titular.getCpf());
-            conta.Depositar(100);
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
-            double valor = Convert.ToDouble(textBoxValor.Text);
+            string cpf = textBoxCpf.Text;
+            //double valor = Convert.ToDouble(textBoxValor.Text);
+            //definindo as variaveis de entrada de texto do programa
 
-            if (login == "a" && passwd == "a")
+            Conta conta = new Conta();
+            Cliente cliente = new Cliente();
+            conta.titular = cliente;
+
+            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd); 
+
+            dbLogin dbLogin = new dbLogin();
+            dbLogin.Status(login, passwd);
+
+            if (dbLogin.statusLogin)
+
             {
-                conta.Sacar(valor); 
-                MessageBox.Show("Saldo:" + conta.getSaldo());
-                
+                MessageBox.Show("id:" + dbGetClienteID.id);
             }
-            else
-            {
-                MessageBox.Show("Não autorizado!");
-            }
+
+
+
+
+
+
 
         }
 
@@ -142,7 +148,7 @@ namespace forms_teste
                     }
                     else
                     {
-                        dbCadastro dbCadastro = new dbCadastro(login, passwd, cpf);
+                        dbCadastro dbCadastro = new dbCadastro(login, cpf, passwd);
                         MessageBox.Show(dbCadastro.msg);
                     }                   
                 }                         

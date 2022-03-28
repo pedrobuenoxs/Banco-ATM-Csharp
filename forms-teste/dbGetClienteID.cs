@@ -15,19 +15,18 @@ namespace forms_teste
         SqlCommand cmd = new SqlCommand();
 
         public String msg;
-        public String id;
-        SqlDataReader idCliente;
+        public int id;
+        SqlDataReader dr;
+        
 
         public dbGetClienteID(String Nome, String Senha)
         {
-            cmd.Parameters.AddWithValue("@nome", Nome);
-            
+            cmd.Parameters.AddWithValue("@nome", Nome);            
             cmd.Parameters.AddWithValue("@senha", Senha);
             //Comando Sql
             
             // !!!!! PRECISO DESCOBRIR COMO ARMAZERNAR O VALOR DE UM SELECT
-            cmd.CommandText = "select idCliente from tblClientes wherer Nome = @nomeCliente and Senha = @Senha";
-            
+            cmd.CommandText = "select idCliente from tblClientes where Nome = @nome and Senha = @senha";           
 
             
             //paramePtros         
@@ -37,17 +36,11 @@ namespace forms_teste
                 //conectar com bd                
 
                 cmd.Connection = dbConexao.Connection();
-
-                idCliente = cmd.ExecuteReader();
-
-
-                //executar comando
-                cmd.ExecuteNonQuery();
-                //desconect
+                                                
+                this.id = Convert.ToInt32(cmd.ExecuteScalar());
+                
                 dbConexao.Desconectar();
-                //msg
-                this.msg = Convert.ToString(idCliente);
-
+                
 
 
             }

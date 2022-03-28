@@ -16,14 +16,22 @@ namespace forms_teste
         public bool statusCPF;
         SqlDataReader dbCmdReader;
         public String msg;
+        
 
         public dbCadastro(String Nome,String Cpf,String Senha)
         {
-            
+            double saldo = 0;
             cmd.Parameters.AddWithValue("@nome", Nome);
             cmd.Parameters.AddWithValue("@cpf", Cpf);
             cmd.Parameters.AddWithValue("@senha", Senha);
+
+                       
+
             cmd.CommandText = "insert into tblClientes values(@nome,@cpf,@senha)";
+            
+
+
+
 
 
             try

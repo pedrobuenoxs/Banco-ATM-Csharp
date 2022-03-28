@@ -23,7 +23,7 @@ namespace forms_teste
             cmd.Parameters.AddWithValue("@senha", Senha);
             
             //Comando Sql
-            int id = Convert.ToInt32(cmd.CommandText = "select idCliente from tblClientes wherer Nome = @nomeCliente and Senha = @Senha");
+            //int id = Convert.ToInt32(cmd.CommandText = "select idCliente from tblClientes wherer Nome = @nomeCliente and Senha = @Senha");
             //cmd.CommandText = "insert into tblConta values(@nome,@cpf,@senha)";
 
             /*
