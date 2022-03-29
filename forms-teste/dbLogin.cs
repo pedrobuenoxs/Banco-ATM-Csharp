@@ -22,11 +22,14 @@ namespace forms_teste
         {
             cmd.Parameters.AddWithValue("@nome", Nome);
             cmd.Parameters.AddWithValue("@senha", Senha);
+            
             //Comando Sql
             cmd.CommandText = "select * from tblClientes where Nome = @nome and Senha = @senha";
-
-            //paramePtros         
-
+            //textStatusLogin textStatusLogin = new textStatusLogin(Nome,senha);
+            //paramePtros
+            dbGetClienteID dbGetClienteID = new dbGetClienteID(Nome, Senha);
+            Form1 frm1 = (Form1)Application.OpenForms["Form1"];
+            getContaSaldo getContaSaldo = new getContaSaldo(dbGetClienteID.id);
             try
             {   
                 cmd.Connection = dbConexao.Connection();
@@ -38,14 +41,19 @@ namespace forms_teste
                 if (dbCmdReader.HasRows)
                 {
                     this.msg = "Logado com sucesso!";
-                    this.statusLogin = true;                   
+                    this.statusLogin = true;
+                    frm1.statusLogin.ForeColor = System.Drawing.Color.Green;
+                    frm1.statusLogin.Text = "Connected!";
+                    frm1.labelSaldo.Text = "R$ "+getContaSaldo.saldo;
                 }               
             }
             catch (Exception e)
             {
                 //caso der algum erro
-                this.msg = "Erro ao tentar se conectar ao banco de dados";                
+                this.msg = "Erro ao tentar se conectar ao banco de dados";
+                frm1.statusLogin.Text = "Not connected";
                 statusLogin = false;
+                frm1.statusLogin.ForeColor = System.Drawing.Color.Red;
             }
             
             

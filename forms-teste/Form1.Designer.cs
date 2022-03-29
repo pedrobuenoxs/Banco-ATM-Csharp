@@ -41,9 +41,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.label4 = new System.Windows.Forms.Label();
+            this.statusLogin = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxCpf = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelSaldo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -183,18 +185,18 @@
             this.splitter1.TabIndex = 15;
             this.splitter1.TabStop = false;
             // 
-            // label4
+            // statusLogin
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Black;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(23, 370);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 35);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Not connected.";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.statusLogin.AutoSize = true;
+            this.statusLogin.BackColor = System.Drawing.Color.Black;
+            this.statusLogin.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.statusLogin.ForeColor = System.Drawing.Color.Red;
+            this.statusLogin.Location = new System.Drawing.Point(23, 370);
+            this.statusLogin.Name = "statusLogin";
+            this.statusLogin.Size = new System.Drawing.Size(196, 35);
+            this.statusLogin.TabIndex = 17;
+            this.statusLogin.Text = "Not connected.";
+            this.statusLogin.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 
@@ -216,15 +218,40 @@
             this.textBoxCpf.TabIndex = 18;
             this.textBoxCpf.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(610, 194);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 20);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Saldo";
+            // 
+            // labelSaldo
+            // 
+            this.labelSaldo.AutoSize = true;
+            this.labelSaldo.BackColor = System.Drawing.Color.Black;
+            this.labelSaldo.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelSaldo.ForeColor = System.Drawing.Color.White;
+            this.labelSaldo.Location = new System.Drawing.Point(610, 223);
+            this.labelSaldo.Name = "labelSaldo";
+            this.labelSaldo.Size = new System.Drawing.Size(101, 35);
+            this.labelSaldo.TabIndex = 22;
+            this.labelSaldo.Text = "R$ 0,00";
+            this.labelSaldo.Click += new System.EventHandler(this.label7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(781, 414);
+            this.Controls.Add(this.labelSaldo);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxCpf);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.statusLogin);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label5);
@@ -261,8 +288,10 @@
         private Label label5;
         private Button button4;
         private Splitter splitter1;
-        private Label label4;
+        public Label statusLogin;
         private Label label6;
         private TextBox textBoxCpf;
+        private Label label4;
+        public Label labelSaldo;
     }
 }

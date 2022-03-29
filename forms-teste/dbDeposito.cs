@@ -14,32 +14,18 @@ namespace forms_teste
         dbConexao dbConexao = new dbConexao();
         SqlCommand cmd = new SqlCommand();
 
-        public String msg;
+        public String msg = "Deposito não autorizado";
 
-        public dbDeposito(String Nome, String Senha, double valor )
+        public dbDeposito(double valor, int id)
         {
-            cmd.Parameters.AddWithValue("@nomeCliente", Nome);
+            cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@valor", valor);
-            cmd.Parameters.AddWithValue("@senha", Senha);
-            
-            //Comando Sql
-            //int id = Convert.ToInt32(cmd.CommandText = "select idCliente from tblClientes wherer Nome = @nomeCliente and Senha = @Senha");
-            //cmd.CommandText = "insert into tblConta values(@nome,@cpf,@senha)";
-
-            /*
-             * select idCliente from tblClientes
-            where Nome = 'Pedro'
-            and Senha = '123456'*/
 
             //
-            cmd.CommandText = "update tblConta set Saldo = Saldo + @valor where idCliente = @id";
+            cmd.CommandText = "update tblContas set Saldo = Saldo + @valor where idCliente = @id";
             
 
-            /*update tblConta
-            set Saldo = Saldo + 100
-            where idCliente = 1*/
-
-            //paramePtros         
+             
 
             try
             {
@@ -61,7 +47,7 @@ namespace forms_teste
             catch (Exception e)
             {
                 //caso der algum erro
-                this.msg = "Deposito não autorizado!";
+                this.msg = "Erro ao tentar se conectar ao banco de dados";
 
             }
 

@@ -13,7 +13,8 @@ namespace forms_teste
         SqlCommand cmd = new SqlCommand();
         public bool statusCPF;
         SqlDataReader dbCmdReader;
-        public String msg;
+        public String msg = "Saque não autorizado!";
+        
 
         public dbSaque(double valor, int id)
         {

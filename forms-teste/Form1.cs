@@ -25,17 +25,22 @@ namespace forms_teste
 
         private void buttonClick_Sacar(object sender, EventArgs e)
         {
-            
+            //here is done!
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
             double valor = Convert.ToDouble(textBoxValor.Text);
+
+            //dbGetClienteID dbGetClienteID = new dbGetClienteID(Nome, Senha);
+            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd);
+            Form1 frm1 = (Form1)Application.OpenForms["Form1"];
             
+
 
             Conta conta = new Conta();
             
             conta.setSaldo(login,passwd);
 
-            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd);
+            
                         
             dbLogin dbLogin = new dbLogin();
             dbLogin.Status(login, passwd);
@@ -46,7 +51,9 @@ namespace forms_teste
             {
                 dbSaque dbSaque = new dbSaque(valor, dbGetClienteID.id);
                 MessageBox.Show(dbSaque.msg);
-                
+                getContaSaldo getContaSaldo = new getContaSaldo(dbGetClienteID.id);
+                frm1.labelSaldo.Text = "R$ " + getContaSaldo.saldo;
+
 
             }
             else
@@ -73,19 +80,45 @@ namespace forms_teste
 
         private void buttonClick_Depositar(object sender, EventArgs e)
         {
+            //here is done!
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
-            string cpf = textBoxCpf.Text;
-            //double valor = Convert.ToDouble(textBoxValor.Text);
+            double valor = Convert.ToDouble(textBoxValor.Text);
 
-            dbConexao dbConexao = new dbConexao();
+
             Conta conta = new Conta();
-            Cliente cliente = new Cliente();
-            conta.titular = cliente;
 
-            
-            dbGetClienteID dbGetClienteID = new dbGetClienteID(login,passwd);
-            MessageBox.Show(dbGetClienteID.msg);
+            conta.setSaldo(login, passwd);
+            Form1 frm1 = (Form1)Application.OpenForms["Form1"];
+            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd);
+
+            dbLogin dbLogin = new dbLogin();
+            dbLogin.Status(login, passwd);
+
+
+            if (dbLogin.statusLogin)
+
+            {
+                dbDeposito dbDeposito = new dbDeposito(valor, dbGetClienteID.id);
+                MessageBox.Show(dbDeposito.msg);
+                getContaSaldo getContaSaldo = new getContaSaldo(dbGetClienteID.id);
+                frm1.labelSaldo.Text = "R$ " + getContaSaldo.saldo;
+
+
+            }
+            else
+            {
+                if (dbLogin.statusLogin == false)
+                {
+                    MessageBox.Show(dbLogin.msg);
+                    return;
+                }
+                else if (!conta.Sacar(valor))
+                {
+                    MessageBox.Show(conta.statusSaque);
+                    return;
+                }
+            }
 
 
 
@@ -96,35 +129,21 @@ namespace forms_teste
 
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
-            string cpf = textBoxCpf.Text;
-
-            
-
-
-
-            
-
             double valor = Convert.ToDouble(textBoxValor.Text);
-
-            
-
-            
+            int idTransf = Convert.ToInt32(textBoxIdTransf.Text);
 
 
+            dbTransf dbTransf = new dbTransf(login, passwd, idTransf, valor);
 
-
-
-            /* Classes criadas até entao:
-             * Conta - já com metodos de saque, deposito, mostrar o salto etcc
-             * Cliente - necessário criar os metodos dentro dessa classe
-             *
-             */
-
+            Form1 frm1 = (Form1)Application.OpenForms["Form1"];
+            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd);
+            getContaSaldo getContaSaldo = new getContaSaldo(dbGetClienteID.id);
+            frm1.labelSaldo.Text = "R$ " + getContaSaldo.saldo;
 
 
 
         }
-                       
+
 
         private void buttonClick_Login(object sender, EventArgs e)
         {
@@ -191,12 +210,7 @@ namespace forms_teste
 
         private void textValor_TextChanged(object sender, EventArgs e)
         {
-            string login = textBoxLogin.Text;
-            string passwd = textBoxPasswd.Text;
-            string cpf = textBoxCpf.Text;
             
-            //double valor = textBoxValor.Text;
-
         }
 
         private void splitter2_SplitterMoved(object sender, SplitterEventArgs e)
@@ -227,6 +241,16 @@ namespace forms_teste
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
