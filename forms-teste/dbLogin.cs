@@ -16,7 +16,7 @@ namespace forms_teste
         SqlCommand cmd = new SqlCommand();
         SqlDataReader dbCmdReader;
 
-        public String msg;
+        public String msg = "Login não autorizado";
 
         public void Status(string Nome, string Senha)
         {
@@ -38,18 +38,13 @@ namespace forms_teste
                 if (dbCmdReader.HasRows)
                 {
                     this.msg = "Logado com sucesso!";
-                    this.statusLogin = true;
-                    
-
-                }
-
-                
+                    this.statusLogin = true;                   
+                }               
             }
             catch (Exception e)
             {
                 //caso der algum erro
-                this.msg = "Erro ao tentar se conectar ao banco de dados";
-                
+                this.msg = "Erro ao tentar se conectar ao banco de dados";                
                 statusLogin = false;
             }
             

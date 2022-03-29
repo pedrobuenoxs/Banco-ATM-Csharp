@@ -6,12 +6,12 @@ namespace forms_teste
 
 
     {
-
-
-
-        
-        
-        
+        /*
+         * PRONTO:
+         * 1- LOGIN + CADASTRO NOVO
+         * 
+         * 
+         */
 
         public Form1()
         {
@@ -24,29 +24,43 @@ namespace forms_teste
         }
 
         private void buttonClick_Sacar(object sender, EventArgs e)
-
         {
             
-
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
-            string cpf = textBoxCpf.Text;
-            //double valor = Convert.ToDouble(textBoxValor.Text);
-            //definindo as variaveis de entrada de texto do programa
+            double valor = Convert.ToDouble(textBoxValor.Text);
+            
 
             Conta conta = new Conta();
-            Cliente cliente = new Cliente();
-            conta.titular = cliente;
+            
+            conta.setSaldo(login,passwd);
 
-            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd); 
-
+            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd);
+                        
             dbLogin dbLogin = new dbLogin();
             dbLogin.Status(login, passwd);
+            
 
-            if (dbLogin.statusLogin)
+            if (dbLogin.statusLogin && conta.Sacar(valor))
 
             {
-                MessageBox.Show("id:" + dbGetClienteID.id);
+                dbSaque dbSaque = new dbSaque(valor, dbGetClienteID.id);
+                MessageBox.Show(dbSaque.msg);
+                
+
+            }
+            else
+            {
+                if (dbLogin.statusLogin == false)
+                {
+                    MessageBox.Show(dbLogin.msg);
+                    return;
+                }
+                else if(!conta.Sacar(valor))
+                {
+                    MessageBox.Show(conta.statusSaque);
+                    return;
+                }                
             }
 
 
@@ -110,6 +124,7 @@ namespace forms_teste
 
 
         }
+                       
 
         private void buttonClick_Login(object sender, EventArgs e)
         {
@@ -148,8 +163,11 @@ namespace forms_teste
                     }
                     else
                     {
-                        dbCadastro dbCadastro = new dbCadastro(login, cpf, passwd);
-                        MessageBox.Show(dbCadastro.msg);
+                        dbCadastro dbCadastro = new dbCadastro(login, cpf, passwd);                        
+                        dbGetClienteID dbGetClienteID = new dbGetClienteID(login,passwd);
+                        dbCadastroConta dbCadastroConta = new dbCadastroConta(dbGetClienteID.id);
+                        MessageBox.Show(dbCadastro.msg + "\n" + dbCadastroConta.msg);
+
                     }                   
                 }                         
             }
@@ -176,6 +194,7 @@ namespace forms_teste
             string login = textBoxLogin.Text;
             string passwd = textBoxPasswd.Text;
             string cpf = textBoxCpf.Text;
+            
             //double valor = textBoxValor.Text;
 
         }

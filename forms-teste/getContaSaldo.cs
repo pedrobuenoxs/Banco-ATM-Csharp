@@ -7,42 +7,53 @@ using Microsoft.Data.SqlClient;
 
 namespace forms_teste
 {
-    internal class dbSaque
+    internal class getContaSaldo
     {
         dbConexao dbConexao = new dbConexao();
         SqlCommand cmd = new SqlCommand();
         public bool statusCPF;
         SqlDataReader dbCmdReader;
         public String msg;
+        public int saldo;
+            
 
-        public dbSaque(double valor, int id)
+        public getContaSaldo(int id)
         {
             cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@valor", valor);
+            
+            
 
-            cmd.CommandText = "update tblContas set Saldo = Saldo - @valor where idCliente = @id";
+            
+            cmd.CommandText = "select Saldo from tblContas where idCliente = @id";
 
+
+            //paramePtros         
 
             try
             {
+                //conectar com bd                
+
                 cmd.Connection = dbConexao.Connection();
 
-                cmd.ExecuteNonQuery();
+                this.saldo = Convert.ToInt32(cmd.ExecuteScalar());
 
                 dbConexao.Desconectar();
 
-                this.msg = "Saque realizado com sucesso!";
 
 
             }
             catch (Exception e)
             {
+                //caso der algum erro
                 this.msg = "Erro ao tentar se conectar ao banco de dados";
+
             }
 
+
+
+
+            //desconectar
+            //mostrar msg
         }
-
-        
-
     }
 }

@@ -7,20 +7,22 @@ using Microsoft.Data.SqlClient;
 
 namespace forms_teste
 {
-    internal class dbSaque
+    public class dbCadastroConta
     {
         dbConexao dbConexao = new dbConexao();
         SqlCommand cmd = new SqlCommand();
         public bool statusCPF;
-        SqlDataReader dbCmdReader;
+        //SqlDataReader dbCmdReader;
         public String msg;
 
-        public dbSaque(double valor, int id)
+        public dbCadastroConta(int id)
         {
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@valor", valor);
+            double saldo = 0;
 
-            cmd.CommandText = "update tblContas set Saldo = Saldo - @valor where idCliente = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@saldo", saldo);
+
+            cmd.CommandText = "insert into tblContas values(@id,@saldo)";
 
 
             try
@@ -31,7 +33,7 @@ namespace forms_teste
 
                 dbConexao.Desconectar();
 
-                this.msg = "Saque realizado com sucesso!";
+                this.msg = "Conta criada com sucesso!";
 
 
             }
@@ -40,9 +42,7 @@ namespace forms_teste
                 this.msg = "Erro ao tentar se conectar ao banco de dados";
             }
 
+
         }
-
-        
-
     }
 }

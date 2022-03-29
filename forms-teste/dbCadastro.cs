@@ -13,14 +13,13 @@ namespace forms_teste
     {   
         dbConexao dbConexao = new dbConexao();
         SqlCommand cmd = new SqlCommand();
-        public bool statusCPF;
-        SqlDataReader dbCmdReader;
+        public bool statusCPF;        
         public String msg;
         
 
         public dbCadastro(String Nome,String Cpf,String Senha)
         {
-            double saldo = 0;
+            //double saldo = 0;
             cmd.Parameters.AddWithValue("@nome", Nome);
             cmd.Parameters.AddWithValue("@cpf", Cpf);
             cmd.Parameters.AddWithValue("@senha", Senha);

@@ -9,23 +9,33 @@ namespace forms_teste
     internal class Conta
     {
         private string idConta;
-        private double saldo;
-        
+        public double saldo;
+        public string statusSaque;
         public Cliente titular;
 
 
         public bool Sacar(double valorSaque)
         {
-            bool autorizacaoSaque = (this.saldo >= valorSaque) && (valorSaque > 0);
+            
 
-            if(autorizacaoSaque)
+            if((this.saldo >= valorSaque) && (valorSaque > 0))
             {
-                this.saldo -= valorSaque;
+                //this.saldo -= valorSaque;
                 return true;
+                this.statusSaque = "Saque autorizado!";
             }
             else
-            { return false;}
+            {
+                this.statusSaque = "Saldo insuficiente!";
+                return false;
+            }
                         
+        }
+        public void setSaldo(string login, string passwd)
+        {
+            dbGetClienteID dbGetClienteID = new dbGetClienteID(login, passwd);
+            getContaSaldo getContaSaldo = new getContaSaldo(dbGetClienteID.id);
+            this.saldo = getContaSaldo.saldo;
         }
         public double getSaldo()
             { return this.saldo; }

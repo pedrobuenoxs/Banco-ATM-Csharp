@@ -16,7 +16,7 @@ namespace forms_teste
 
         public String msg;
         public int id;
-        SqlDataReader dr;
+        
         
 
         public dbGetClienteID(String Nome, String Senha)
